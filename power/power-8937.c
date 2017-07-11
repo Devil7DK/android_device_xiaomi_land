@@ -130,7 +130,6 @@ static void set_power_profile(int profile) {
 static void process_video_encode_hint(void *metadata)
 {
     char governor[80];
-    struct video_encode_metadata_t video_encode_metadata;
 
     ALOGI("Got process_video_encode_hint");
 
@@ -149,22 +148,7 @@ static void process_video_encode_hint(void *metadata)
         }
     }
 
-    if (!metadata) {
-        return;
-    }
-
-    /* Initialize encode metadata struct fields. */
-    memset(&video_encode_metadata, 0, sizeof(struct video_encode_metadata_t));
-    video_encode_metadata.state = -1;
-    video_encode_metadata.hint_id = DEFAULT_VIDEO_ENCODE_HINT_ID;
-
-    if (parse_video_encode_metadata((char *)metadata,
-                &video_encode_metadata) == -1) {
-        ALOGE("Error occurred while parsing metadata.");
-        return;
-    }
-
-    if (video_encode_metadata.state == 1) {
+    if (metadata) {
         if (is_interactive_governor(governor)) {
             /* Sched_load and migration_notif*/
             int resource_values[] = {
@@ -181,7 +165,7 @@ static void process_video_encode_hint(void *metadata)
                 video_encode_hint_sent = 1;
             }
         }
-    } else if (video_encode_metadata.state == 0) {
+    } else {
         if (is_interactive_governor(governor)) {
             undo_hint_action(video_encode_metadata.hint_id);
             video_encode_hint_sent = 0;
