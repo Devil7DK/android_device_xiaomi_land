@@ -37,10 +37,10 @@
 #include <android-base/file.h>
 #include <android-base/properties.h>
 #include <android-base/strings.h>
+#include <android-base/logging.h>
 
 #include "property_service.h"
 #include "util.h"
-#include "vendor_init.h"
 
 static std::string board_id;
 
@@ -52,6 +52,9 @@ char const *heapstartsize;
 char const *heapgrowthlimit;
 char const *heapsize;
 char const *heapminfree;
+
+namespace android {
+namespace init {
 
 static void init_alarm_boot_properties()
 {
@@ -156,6 +159,10 @@ void init_variant_properties()
 
 void vendor_load_properties()
 {
+    LOG(INFO) << __func__ << "\n";
+
     init_alarm_boot_properties();
     init_variant_properties();
 }
+}  // namespace init
+}  // namespace android
