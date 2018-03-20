@@ -44,3 +44,6 @@ BUILD_FINGERPRINT := "Xiaomi/land/land:6.0.1/MMB29M/V9.5.1.0.MALMIFA:user/releas
 
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
     ro.product.model
+
+# AOSVP
+AOSVP_BUILD_TYPE := OFFICIAL
