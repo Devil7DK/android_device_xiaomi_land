@@ -14,4 +14,4 @@
 # limitations under the License.
 #
 
-add_lunch_combo validus_land-userdebug
+add_lunch_combo candy_land-userdebug
