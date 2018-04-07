@@ -606,6 +606,15 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/m
     disabled
     writepid /dev/cpuset/system-background/tasks
 
+# redefine cameraserver to load shim
+service cameraserver /system/bin/cameraserver
+    class main
+    user cameraserver
+    group audio camera input drmrpc
+    ioprio rt 4
+    setenv LD_PRELOAD "libshim_cameraservice.so"
+    writepid /dev/cpuset/camera-daemon/tasks /dev/stune/top-app/tasks
+
 on charger
     setprop persist.sys.usb.config mass_storage
     load_system_props
