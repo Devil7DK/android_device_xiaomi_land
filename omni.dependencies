@@ -26,5 +26,9 @@
   {
     "repository": "android_external_ant-wireless_ant_service",
     "target_path": "external/ant-wireless/ant/service"
+  },
+  {
+    "repository": "vendor_qcom_opensource_dataservices",
+    "target_path": "vendor/qcom/opensource/dataservices"
   }
 ]
