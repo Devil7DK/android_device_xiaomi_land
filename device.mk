@@ -303,6 +303,11 @@ PRODUCT_PACKAGES += \
     libandroid_net \
     libandroid_net_32
 
+# Perf
+PRODUCT_BOOT_JARS += \
+    QPerformance \
+    UxPerformance
+
 # Power
 PRODUCT_PACKAGES += \
     power.qcom
