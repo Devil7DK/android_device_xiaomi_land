@@ -357,6 +357,8 @@ vendor/lib/libwms.so
 vendor/lib64/libwms.so
 
 # Perf - from marmite - OPM5.171019.017 - UOS273C
+-framework/QPerformance.jar
+-framework/UxPerformance.jar
 -lib/vendor.qti.hardware.iop@1.0.so
 -lib/vendor.qti.hardware.iop@2.0.so
 lib/vendor.qti.hardware.perf@1.0.so
